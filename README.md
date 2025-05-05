@@ -40,8 +40,7 @@ bash scripts/tinyllama/sft_tinyllama.sh
 ```
 
 
-### KD for the Same Vocabulary
-#### Vanilla KD framework
+### KD 
 For GPT2-base, run:
 ```bash
 bash scripts/gpt2/vanilla_kd_gpt2_base.sh
