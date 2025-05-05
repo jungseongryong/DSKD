@@ -1,6 +1,6 @@
 # ToDi: Token-wise Distillation via Fine-Grained Divergence Control
 
-Some of our code follows [DSKD](https://github.com/songmzhang/DSKD) and [MiniLLM](https://github.com/microsoft/LMOps/tree/main/minillm) and [Distillm](https://github.com/jongwooko/distillm/tree/master).
+Some of our code is based on [DSKD](https://github.com/songmzhang/DSKD), [MiniLLM](https://github.com/microsoft/LMOps/tree/main/minillm) and [Distillm](https://github.com/jongwooko/distillm/tree/master).
 
 ## Requirements
 - deepspeed >= 0.14.0
