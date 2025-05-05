@@ -16,10 +16,8 @@ You can download the corresponding model files (e.g., `pytorch_model.bin` or `mo
 Here are the links of these models on huggingface:
 - GPT2-120M: [Here](https://huggingface.co/openai-community/gpt2)
 - GPT2-1.5B (trained on Dolly by Gu et al.): [Here](https://github.com/microsoft/LMOps/blob/main/minillm/README.md#31-resources)
-- Qwen1.5-1.8B: [Here](https://huggingface.co/Qwen/Qwen1.5-1.8B)
 - TinyLLaMA-1.1B: [Here](https://huggingface.co/TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T)
 - Llama2-7B: [Here](https://huggingface.co/meta-llama/Llama-2-7b-hf)
-- Mistral-7B: [Here](https://huggingface.co/mistralai/Mistral-7B-v0.1)
 
 ## Training
 ### SFT for teacher models
