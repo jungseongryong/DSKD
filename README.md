@@ -21,20 +21,12 @@ Here are the links of these models on huggingface:
 
 ## Training
 ### SFT for teacher models
-For Qwen1.5-1.8B (full fine-tuning), run:
-```bash
-bash scripts/gpt2/sft_teacher_qwen.sh
-```
 
 For LLaMA2-7B (LoRA), run:
 ```bash
 bash scripts/tinyllama/sft_teacher_llama2.sh
 ```
 
-For Mistral-7B (LoRA), run:
-```bash
-bash scripts/tinyllama/sft_teacher_mistral.sh
-```
 
 ### SFT for student models
 For GPT2-base (full fine-tuning), run:
@@ -47,8 +39,6 @@ For TinyLLaMA-1.1B (LoRA), run:
 bash scripts/tinyllama/sft_tinyllama.sh
 ```
 
-P.S. You may encounter an error **when directly loading the model checkpoint of TinyLLaMA**. This is because of the mismatched versions of `transformers` between TinyLLaMA suggested (4.31) and the one you use.
-A concise solution to fix this can be referred to in [this issue](https://github.com/songmzhang/DSKD/issues/8).
 
 ### KD for the Same Vocabulary
 #### Vanilla KD framework
@@ -64,56 +54,10 @@ bash scripts/tinyllama/vanilla_kd_tinyllama.sh
 
 You can change the distance functions (e.g., KL Divergence, Reverse KL Divergence, JS Divergence, etc.) using `KD_OBJ` in the above scripts.
 
-#### Dual-Space KD framework
-For GPT2-base, run:
-```bash
-bash scripts/gpt2/dskd_gpt2_base.sh
-```
 
-For TinyLLaMA-1.1B, run:
-```bash
-bash scripts/tinyllama/dskd_tinyllama.sh
-```
 
-Also, you can change the distance functions using `KD_OBJ` in the above scripts.
 
-### KD for different vocabularies
-#### Logits Alignment by Minimum Edit Distance ([paper](https://arxiv.org/abs/2401.10491), [original implementation](https://github.com/fanqiwan/FuseAI))
-The original implementation in this [repo](https://github.com/fanqiwan/FuseAI) pre-processes the logit alignment before distillation, while we re-implement this method by faster calculating alignment during distillation in [code/criterions/min_edit_dis_kld.py](https://github.com/songmzhang/DSKD/blob/1fc215196ea473aab971eea3b765ade57bbfb21b/code/criterions/min_edit_dis_kld.py).
 
-For GPT2-base, run:
-```bash
-bash scripts/gpt2/minedit_gpt2_base.sh
-```
-
-For TinyLLaMA-1.1B, run:
-```bash
-bash scripts/tinyllama/minedit_tinyllama.sh
-```
-
-#### Universal Logit Distillation ([paper](https://arxiv.org/abs/2402.12030), [original implementation](https://github.com/Nicolas-BZRD/llm-recipes))
-We also re-implement this method in [code/criterions/universal_logit_distillation.py](https://github.com/songmzhang/DSKD/blob/1fc215196ea473aab971eea3b765ade57bbfb21b/code/criterions/universal_logit_distillation.py).
-
-For GPT2-base, run:
-```bash
-bash scripts/gpt2/uld_gpt2_base.sh
-```
-
-For TinyLLaMA-1.1B, run:
-```bash
-bash scripts/tinyllama/uld_tinyllama.sh
-```
-
-#### Our Dual-Space KD with Cross-Model Attention (CMA)
-For GPT2-base, run:
-```bash
-bash scripts/gpt2/dskd_cma_gpt2_base.sh
-```
-
-For TinyLLaMA-1.1B, run:
-```bash
-bash scripts/tinyllama/dskd_cma_tinyllama.sh
-```
 
 ### File Structures in Output Directory
 The output directory will be created under `./outputs` automatically after you run the training scripts. 
@@ -173,18 +117,8 @@ According to the above structure, `CKPT_PATH` is the **absolute path** of the mo
 ```bash
 bash scripts/eval/run_eval_lora.sh ${LORA_ADAPTER_PATH} ${EVAL_BATCH_SIZE}
 ```
-Please note that `MODEL_PATH` in `run_eval_lora.sh` should be changed for different base models (TinyLLaMA, LLaMA2, Mistral).
+Please note that `MODEL_PATH` in `run_eval_lora.sh` should be changed for different base models (TinyLLaMA, LLaMA2).
 
 Similarly, `LORA_ADAPTER_PATH` is the **absolute path** of the LoRA adapter files like `/home/xxx/DSKD/outputs/tinyllama/tinyllama-1.1b-3T/sft/criterion=cross_entropy__lora-rank=256-alpha=8.../epochA_step...`.
 
-## BibTeX
-If you find this repo useful for your research, please consider citing our paper:
 
-```
-@article{zhang2024dskd,
-      title={Dual-Space Knowledge Distillation for Large Language Models}, 
-      author={Songming Zhang and Xue Zhang and Zengkui Sun and Yufeng Chen and Jinan Xu},
-      year={2024},
-      journal={arXiv preprint arXiv:2406.17328},
-}
-```
