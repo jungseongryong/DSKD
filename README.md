@@ -18,6 +18,9 @@ Here are the links of these models on huggingface:
 - GPT2-1.5B (trained on Dolly by Gu et al.): [Here](https://github.com/microsoft/LMOps/blob/main/minillm/README.md#31-resources)
 - TinyLLaMA-1.1B: [Here](https://huggingface.co/TinyLlama/TinyLlama-1.1B-intermediate-step-1431k-3T)
 - Llama2-7B: [Here](https://huggingface.co/meta-llama/Llama-2-7b-hf)
+- OLMo2: [Here](https://huggingface.co/collections/allenai/olmo-2-674117b93ab84e98afc72edc)
+- Qwen2.5: [Here](https://huggingface.co/collections/Qwen/qwen25-66e81a666513e518adb90d9e)
+- Gemma3: [Here](https://huggingface.co/collections/google/gemma-3-release-67c6c6f89c4f76621268bb6d)
 
 ## Training
 ### SFT for teacher models
